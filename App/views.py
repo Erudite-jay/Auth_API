@@ -68,4 +68,23 @@ def editUserDetails(request,username):
             print(e)
             return JsonResponse(e,status=400)
 
-    
+@csrf_exempt  
+def deleteUserDetails(request,username):
+        if request.method == 'DELETE':     
+            try:
+                user = User.objects.get(pk=username)
+                user.delete()
+                data={
+                    "success": True,
+                    "message": f"User {username} Deleted Successfully",
+                }
+                return JsonResponse(data,status=200)
+            except Exception as e:
+                print(e)
+                data = {
+                    "success": False,
+                    "message": "Error deleting user",
+                }
+                return JsonResponse(data, status=400)
+        else:
+            return JsonResponse({"message": "Method not allowed"},status=405)

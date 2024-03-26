@@ -23,4 +23,5 @@ urlpatterns = [
     path('all-user-details/',views.allUserDetails, name='allUserDetails'),
     path('user-details/<slug:username>/', views.userDetails, name='userDetails'),
     path('edit-user-details/<slug:username>/',views.editUserDetails,name='editUserDetails'),
+    path('delete-user-details/<slug:username>/',views.deleteUserDetails,name="deleteUserDetails")
 ]
