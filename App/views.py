@@ -30,7 +30,6 @@ def signup(request):
             data={'errors':e}
             return JsonResponse(data,status = 400)
         
-
         
 def allUserDetails(request):
     if request.method == 'GET':
@@ -47,7 +46,6 @@ def allUserDetails(request):
             return JsonResponse(data, status=400)
 
 
-
 def userDetails(request,username):
     if request.method == 'GET':
         try:
@@ -61,6 +59,7 @@ def userDetails(request,username):
                    "message": "Error Getting user",
                }
             return JsonResponse(data, status=400)
+
 
 @csrf_exempt 
 def editUserDetails(request,username):
