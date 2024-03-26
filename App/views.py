@@ -27,7 +27,8 @@ def signup(request):
 
         except Exception as e:
             print(e)
-            return JsonResponse(e)
+            data={'errors':e}
+            return JsonResponse(data,status = 400)
         
 
         
@@ -39,7 +40,12 @@ def allUserDetails(request):
             return JsonResponse(serializer.data, safe=False, status = 200)
         except Exception as e:
             print(e)
-            return JsonResponse(e,status=400)
+            data = {
+                   "success": False,
+                   "message": "Error Getting user",
+               }
+            return JsonResponse(data, status=400)
+
 
 
 def userDetails(request,username):
@@ -50,8 +56,11 @@ def userDetails(request,username):
             return JsonResponse(serializer.data, safe=False, status = 200)
         except Exception as e:
             print(e)
-            return JsonResponse(e,status=400)
-
+            data = {
+                   "success": False,
+                   "message": "Error Getting user",
+               }
+            return JsonResponse(data, status=400)
 
 @csrf_exempt 
 def editUserDetails(request,username):
@@ -68,7 +77,11 @@ def editUserDetails(request,username):
                 return JsonResponse(serializer_data.errors, safe=False,status = 400)
         except Exception as e:
             print(e)
-            return JsonResponse(e,status=400)
+            data = {
+                    "success": False,
+                    "message": "Error Updating user",
+                }
+            return JsonResponse(data, status=400)
 
 
 @csrf_exempt  
