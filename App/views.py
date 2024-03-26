@@ -50,8 +50,22 @@ def userDetails(request,username):
             print(e)
             return JsonResponse(e,status=400)
 
-    
-def editAllDetails(request,username):
-    pass
+@csrf_exempt 
+def editUserDetails(request,username):
+    if request.method == 'PUT':
+        try:
+            input_data = JSONParser().parse(request)
+            user = User.objects.get(pk=username)
+            serializer_data=UserSerializer(user,data=input_data)
+
+            if serializer_data.is_valid():
+                serializer_data.save()
+                return JsonResponse(serializer_data.data, safe=False, status = 201)
+            else:
+                return JsonResponse(serializer_data.errors, safe=False,status = 400)
+
+        except Exception as e:
+            print(e)
+            return JsonResponse(e,status=400)
 
     

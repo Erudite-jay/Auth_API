@@ -22,5 +22,5 @@ urlpatterns = [
     path('signup/',views.signup, name='signup'),
     path('all-user-details/',views.allUserDetails, name='allUserDetails'),
     path('user-details/<slug:username>/', views.userDetails, name='userDetails'),
-    path('edit-all-details/<slug:username>/',views.editAllDetails,name='editAlldetails'),
+    path('edit-user-details/<slug:username>/',views.editUserDetails,name='editUserDetails'),
 ]
