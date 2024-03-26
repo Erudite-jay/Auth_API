@@ -11,9 +11,9 @@ from App.models import User
 def test(request):
     return HttpResponse("Hello, world. You're Working Fine. Go Ahead!")
 
+
 @csrf_exempt
 def signup(request):
-
     if request.method == 'POST':
         try:
             input_data = JSONParser().parse(request)
@@ -29,6 +29,7 @@ def signup(request):
             print(e)
             return JsonResponse(e)
         
+
         
 def allUserDetails(request):
     if request.method == 'GET':
@@ -40,6 +41,7 @@ def allUserDetails(request):
             print(e)
             return JsonResponse(e,status=400)
 
+
 def userDetails(request,username):
     if request.method == 'GET':
         try:
@@ -49,6 +51,7 @@ def userDetails(request,username):
         except Exception as e:
             print(e)
             return JsonResponse(e,status=400)
+
 
 @csrf_exempt 
 def editUserDetails(request,username):
@@ -63,10 +66,10 @@ def editUserDetails(request,username):
                 return JsonResponse(serializer_data.data, safe=False, status = 201)
             else:
                 return JsonResponse(serializer_data.errors, safe=False,status = 400)
-
         except Exception as e:
             print(e)
             return JsonResponse(e,status=400)
+
 
 @csrf_exempt  
 def deleteUserDetails(request,username):
