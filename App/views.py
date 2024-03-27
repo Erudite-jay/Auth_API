@@ -37,6 +37,7 @@ def allUserDetails(request):
             users = User.objects.all()
             serializer = UserSerializer(users, many=True)
             return JsonResponse(serializer.data, safe=False, status = 200)
+        
         except Exception as e:
             print(e)
             data = {
