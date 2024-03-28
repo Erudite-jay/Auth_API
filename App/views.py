@@ -14,7 +14,7 @@ def test(request):
 
 @csrf_exempt
 def signup(request):
-    if request.method == 'POST':
+    if request.method == 'POST':  
         try:
             input_data = JSONParser().parse(request)
             serializer_data=UserSerializer(data=input_data)
@@ -29,7 +29,6 @@ def signup(request):
             print(e)
             data={'errors':e}
             return JsonResponse(data,status = 400)
-        
         
 def allUserDetails(request):
     if request.method == 'GET':

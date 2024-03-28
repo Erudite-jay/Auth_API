@@ -1,11 +1,30 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href= "{% static 'App/main.css' %}">
     <title>Signup Page</title>
 </head>
 <body>
-    
+    <form action="">
+        <h1>Sign Up</h1>
+        <label for="username">Username:</label>
+        <input type="text" id="username">
+
+        <label for="password">Password:</label>
+        <input type="password" id="password">
+
+        <label for="confirm">Confirm Password:</label>
+        <input type="password" id="confirm">
+
+        <button type="submit"> Signup</button>
+    </form>
+
+    <div> 
+        <p>Existing User?</p>
+        <button> <a href="login.html"> Login</a></button>
+    </div>
 </body>
 </html>

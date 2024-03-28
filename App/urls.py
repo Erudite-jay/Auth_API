@@ -19,9 +19,9 @@ from . import views
 urlpatterns = [
     path('',views.test, name='test'),
     
-    path('signup/',views.signup, name='signup'),
-    path('all-user-details/',views.allUserDetails, name='allUserDetails'),
-    path('user-details/<slug:username>/', views.userDetails, name='userDetails'),
-    path('edit-user-details/<slug:username>/',views.editUserDetails,name='editUserDetails'),
-    path('delete-user-details/<slug:username>/',views.deleteUserDetails,name="deleteUserDetails")
+    path('api/signup/',views.signup, name='signup'),
+    path('api/all-user-details/',views.allUserDetails, name='allUserDetails'),
+    path('api/user-details/<slug:username>/', views.userDetails, name='userDetails'),
+    path('api/edit-user-details/<slug:username>/',views.editUserDetails,name='editUserDetails'),
+    path('api/delete-user-details/<slug:username>/',views.deleteUserDetails,name="deleteUserDetails")
 ]
