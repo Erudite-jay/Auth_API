@@ -64,11 +64,10 @@ document
 
       const data = await response.json();
       console.log(data);
-      document.location.replace("/login");
-      alert("Successfully signed up");
+      alert("Successfully Login");
 
     } catch (error) {
       console.error("Error:", error);
-      alert("Failed to sign up");
+      alert("Failed to Login up");
     }
   });
