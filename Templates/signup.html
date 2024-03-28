@@ -8,23 +8,31 @@
     <title>Signup Page</title>
 </head>
 <body>
-    <form action="">
+    <form id='signup-form'>
         <h1>Sign Up</h1>
         <label for="username">Username:</label>
         <input type="text" id="username">
+         
+        <label for="first_name">First Name</label>
+        <input type="text" id="first_name">
+       
+        <label for="last_name">Last Name</label>
+        <input type="text" id="last_name">
+
+        <label for="contact">Contact</label>
+        <input type="text" id="contact">
 
         <label for="password">Password:</label>
         <input type="password" id="password">
-
-        <label for="confirm">Confirm Password:</label>
-        <input type="password" id="confirm">
 
         <button type="submit"> Signup</button>
     </form>
 
     <div> 
         <p>Existing User?</p>
-        <button> <a href="login.html"> Login</a></button>
+        <button> <a href="/login"> Login</a></button>
     </div>
+
+    <script src="{% static 'App/script.js' %}"></script>
 </body>
 </html>

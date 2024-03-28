@@ -1,8 +1,24 @@
-body {
-    background-color: black;
-    color:azure;
+body{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
 }
 
 form {
-background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    gap: 10px;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(214, 0, 0);
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    cursor: pointer;
 }

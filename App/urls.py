@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.urls import path
 from . import views
+from django.views.generic.base import TemplateView
 
 urlpatterns = [
     path('',views.test, name='test'),
@@ -23,5 +24,9 @@ urlpatterns = [
     path('api/all-user-details/',views.allUserDetails, name='allUserDetails'),
     path('api/user-details/<slug:username>/', views.userDetails, name='userDetails'),
     path('api/edit-user-details/<slug:username>/',views.editUserDetails,name='editUserDetails'),
-    path('api/delete-user-details/<slug:username>/',views.deleteUserDetails,name="deleteUserDetails")
+    path('api/delete-user-details/<slug:username>/',views.deleteUserDetails,name="deleteUserDetails"),
+
+    path('signup/', TemplateView.as_view(template_name='signup.html'), name='signuppage'),
+    path('login/', TemplateView.as_view(template_name='login.html'), name='loginpage'),
+    path('logout/', TemplateView.as_view(template_name='logout.html'), name='logoutpage'),
 ]
