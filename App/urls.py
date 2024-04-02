@@ -26,6 +26,8 @@ urlpatterns = [
     path('api/edit-user-details/<slug:username>/',views.editUserDetails,name='editUserDetails'),
     path('api/delete-user-details/<slug:username>/',views.deleteUserDetails,name="deleteUserDetails"),
 
+    path('api/login/',views.login, name='login'),
+
     path('signup/', TemplateView.as_view(template_name='signup.html'), name='signuppage'),
     path('login/', TemplateView.as_view(template_name='login.html'), name='loginpage'),
     path('logout/', TemplateView.as_view(template_name='logout.html'), name='logoutpage'),

@@ -1,6 +1,8 @@
-document
-  .getElementById("signup-form")
-  .addEventListener("submit", async function (event) {
+const signupPage=document
+.getElementById("signup-form")
+
+if(signupPage) {
+  signupPage.addEventListener("submit", async function (event) {
     event.preventDefault();
     const username = document.getElementById("username").value;
     const first_name = document.getElementById("first_name").value;
@@ -22,25 +24,26 @@ document
         body: JSON.stringify(formData),
       });
 
-      if (!response.ok) {
-        alert("Network response was not ok");
-        return;
-      }
-
       const data = await response.json();
-      console.log(data);
-      document.location.replace("/login");
-      alert("Successfully signed up");
+
+      if (response.ok) {
+        console.log(data);
+        document.location.replace("/login");
+        alert("Successfully signed up");
+      } 
+      else {
+        alert(Object.values(data)[0]);
+      }
 
     } catch (error) {
       console.error("Error:", error);
       alert("Failed to sign up");
     }
   });
+}
 
-
-  document
-  .getElementById("login-form")
+document
+  .getElementById('login-form')
   .addEventListener("submit", async function (event) {
     event.preventDefault();
     const username = document.getElementById("username").value;
@@ -50,21 +53,20 @@ document
       username: username,
       password: password,
     };
-
     try {
       const response = await fetch("/api/login/", {
         method: "POST",
         body: JSON.stringify(formData),
       });
-
-      if (!response.ok) {
-        alert("Network response was not ok");
-        return;
-      }
-
+      
       const data = await response.json();
-      console.log(data);
-      alert("Successfully Login");
+      if (response.ok) {
+        console.log(data);
+        alert("Successfully Log in");
+      } 
+      else {
+        alert(data.message)
+      }
 
     } catch (error) {
       console.error("Error:", error);

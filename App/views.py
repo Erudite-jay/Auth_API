@@ -103,3 +103,32 @@ def deleteUserDetails(request,username):
                 return JsonResponse(data, status=400)
         else:
             return JsonResponse({"message": "Method not allowed"},status=405)
+
+@csrf_exempt
+def login(request):
+    if request.method == 'POST':
+        try:
+            data = JSONParser().parse(request)
+            print(data)
+            user = User.objects.get(pk=data['username'])
+            serializer=UserSerializer(user)
+
+            if serializer.data['password']==data['password']:
+                data = {
+                    "success": True,
+                    "message": f"User Logged In Successfully",
+                }
+                return JsonResponse(data,status=200)
+            else:
+                data = {
+                    "success": False,
+                    "message": f"Invalid Credentials",
+                }
+                return JsonResponse(data,status=400)
+        except Exception as e:
+            print(e)
+            data = {
+                    "success": False,
+                    "message": f"Invalid Credentials",
+                }
+            return JsonResponse(data, status=400)
