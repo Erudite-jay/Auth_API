@@ -157,3 +157,5 @@ def singleFunctionSignup(request):
         
     return render(request, 'signup.html')
 
+def home(request):   
+    return render(request, 'App/home.html')

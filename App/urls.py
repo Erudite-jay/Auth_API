@@ -30,7 +30,9 @@ urlpatterns = [
     # this api for  rendering frontpage as well as api directly
     path("single-function/signup/",views.singleFunctionSignup, name='singleFunctionSignup'),
 
-    path('signup/', TemplateView.as_view(template_name='signup.html'), name='signuppage'),
-    path('login/', TemplateView.as_view(template_name='login.html'), name='loginpage'),
-    path('logout/', TemplateView.as_view(template_name='logout.html'), name='logoutpage'),
+    path('signup/', TemplateView.as_view(template_name='App/signup.html'), name='signuppage'),
+    path('login/', TemplateView.as_view(template_name='App/login.html'), name='loginpage'),
+    path('logout/', TemplateView.as_view(template_name='App/logout.html'), name='logoutpage'),
+
+    path('home/', views.home, name='home'),
 ]

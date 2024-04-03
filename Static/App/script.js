@@ -68,8 +68,8 @@ document
       
       const data = await response.json();
       if (response.ok) {
+        document.location.replace("/home");
         console.log(data);
-        alert("Successfully Log in");
       } 
       else {
         alert(data.message)
