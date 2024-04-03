@@ -117,6 +117,7 @@ def login(request):
                 data = {
                     "success": True,
                     "message": f"User Logged In Successfully",
+                    "name": serializer.data['first_name'] + " " + serializer.data['last_name'],
                 }
                 return JsonResponse(data,status=200)
             else:

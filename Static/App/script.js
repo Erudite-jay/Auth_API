@@ -49,9 +49,10 @@ if(signupPage) {
   });
 }
 
-document
-  .getElementById('login-form')
-  .addEventListener("submit", async function (event) {
+const loginPage=document
+.getElementById("login-form")
+if(loginPage){
+loginPage.addEventListener("submit", async function (event) {
     event.preventDefault();
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
@@ -68,7 +69,7 @@ document
       
       const data = await response.json();
       if (response.ok) {
-        document.location.replace("/home");
+        document.location.replace("/home?n=" + data.name);
         console.log(data);
       } 
       else {
@@ -80,3 +81,13 @@ document
       alert("Failed to Login up");
     }
   });
+}
+
+
+// home-page js 
+const params = new URLSearchParams(window.location.search);
+let value = params.get("n"); 
+
+if(value){
+document.querySelector('h1').innerHTML+=(value);
+}
