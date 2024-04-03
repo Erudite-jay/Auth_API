@@ -1,11 +1,11 @@
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import render
 
 from rest_framework.parsers import JSONParser
 from .serializers import UserSerializer
 
 from App.models import User
-
 # Create your views here.
 
 def test(request):
@@ -132,3 +132,28 @@ def login(request):
                     "message": f"Invalid Credentials",
                 }
             return JsonResponse(data, status=400)
+        
+
+
+# here we are calling frontend and api at once 
+@csrf_exempt
+def singleFunctionSignup(request):
+    if request.method == 'POST':
+        try:
+            input_data = request.POST
+            serializer_data=UserSerializer(data=input_data)
+
+            if serializer_data.is_valid():
+                serializer_data.save()
+                return HttpResponse("Signup Succesfull")
+            
+        except Exception as e:
+            print(f"error is {e}")
+            data = {
+                    "success": False,
+                    "message": f"Cannot register user {e} ",
+                }
+            return HttpResponse(data)
+        
+    return render(request, 'signup.html')
+

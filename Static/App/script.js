@@ -1,3 +1,9 @@
+// using single signup page for both type api call as well as single function method using current url method
+if (window.location.toString().includes("single"))
+console.log("single signup page")
+else
+console.log("multiple signup page")
+
 const signupPage=document
 .getElementById("signup-form")
 

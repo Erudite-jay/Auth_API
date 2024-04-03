@@ -21,12 +21,14 @@ urlpatterns = [
     path('',views.test, name='test'),
     
     path('api/signup/',views.signup, name='signup'),
+    path('api/login/',views.login, name='login'),
     path('api/all-user-details/',views.allUserDetails, name='allUserDetails'),
     path('api/user-details/<slug:username>/', views.userDetails, name='userDetails'),
     path('api/edit-user-details/<slug:username>/',views.editUserDetails,name='editUserDetails'),
     path('api/delete-user-details/<slug:username>/',views.deleteUserDetails,name="deleteUserDetails"),
-
-    path('api/login/',views.login, name='login'),
+    
+    # this api for  rendering frontpage as well as api directly
+    path("single-function/signup/",views.singleFunctionSignup, name='singleFunctionSignup'),
 
     path('signup/', TemplateView.as_view(template_name='signup.html'), name='signuppage'),
     path('login/', TemplateView.as_view(template_name='login.html'), name='loginpage'),
